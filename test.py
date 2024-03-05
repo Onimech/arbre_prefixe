@@ -1,6 +1,6 @@
-def creaAbr():
+def creaAbr(m, k):
      A={'val' : 'R'}
-     
+
 
 
 def main ():
