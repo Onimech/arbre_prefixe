@@ -1,7 +1,8 @@
+def creaAbr():
+     A={'val' : 'R'}
+     
 
 
-
-
-SIUUUUU
-
-
+def main ():
+     motif = input("Entrez la motif : ")
+     k = input("Entrez la longueur k : ")
