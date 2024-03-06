@@ -5,7 +5,7 @@ def creaAbr(m, k):
 
 def main ():
      motif = input("Entrez la motif : ")
-     k = input("Entrez la longueur k : ")
+     k = int(input("Entrez la longueur k : "))
      sequence = input("Entrez la séquence voulue :")
      alphabet = caracteres_diff(sequence)
      print(sequence)
