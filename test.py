@@ -28,7 +28,9 @@ def remplissage_abr(seq, arbre, alphabet, LS, k):
             for suffixe in LS:
                 if len(suffixe)>k:
                     LS.remove(suffixe)
-        
+        for suffixe in LS: 
+            if suffixe == "": 
+                arbre["clé"] += 1
 main()
 
 
