@@ -7,8 +7,6 @@ def main():
     liste_suffixe=[""]
     arbre = init_arbre(alphabet)
     print(arbre)
-  
-
 
 def caracteres_diff(seq):
     return set(seq)
@@ -20,6 +18,10 @@ def init_arbre(alphabet):
     for l in alphabet:
         A[l]={}
     return A
+
+def remplisage_abr(seq, ):
+    for i in 1..len(seq):
+        a=1
 
 
 
