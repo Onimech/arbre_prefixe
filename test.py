@@ -3,7 +3,7 @@ def main():
     k = int(input("Entrez la longueur k : "))
     sequence = input("Entrez la séquence voulue : ")
     motif_recherche = input("Entrez le motif que vous voulez rechercher : ")
-    
+    match = []
     # Crée un ensemble d'alphabet pour la séquence
     alphabet = caracteres_diff(sequence)
 
@@ -12,6 +12,9 @@ def main():
     
     # Remplit l'arbre avec les motifs de la séquence
     remplissage_abr(sequence, arbre, alphabet, k)
+    print(arbre)
+    affichage_arbre(arbre)
+    
     positions = recherche_motif(motif_recherche, arbre, k)
     if positions:
         print(f"Positions des suffixes correspondant au motif '{motif_recherche}': {positions}")
@@ -20,7 +23,13 @@ def main():
     
     
     for pos in positions:
-        verif(pos, sequence, motif_recherche)
+        verif(pos, sequence, motif_recherche, match)
+        
+    if match!=[]:
+        print(f"Les positions où on retrouve le motif '{motif_recherche}' sont : {match} ")
+    else:
+        print(f"Pas de match dans la séquence pour le motif '{motif_recherche}'")
+     
 
 
 # Fonction qui retourne l'ensemble des caractères uniques dans une séquence
@@ -69,6 +78,17 @@ def inserer_motif_arbre(motif, arbre, position):
     # Ajoute la position de départ du motif
     noeud["clé"].append(position)
     
+    
+    
+def affichage_arbre(arbre, indentation=0):
+    for cle, valeur in arbre.items():
+        if cle == 'clé':
+            print(" " * indentation + f"Positions : {valeur}")
+        else:
+            print(" " * indentation + f"Caractère: {cle}")
+            affichage_arbre(valeur, indentation + 2)
+            
+            
 def recherche_motif(motif, arbre, k):
     noeud = arbre
     # Parcourt chaque caractère du motif jusqu'au k-ème caractère
@@ -81,12 +101,11 @@ def recherche_motif(motif, arbre, k):
     return noeud.get("clé", [])
 
 
-def verif(pos, sequence, motif):
+def verif(pos, sequence, motif, match):
+    
     motif_len = len(motif)
     # Vérifie si la séquence après la position correspond au motif
     if sequence[pos:pos + motif_len] == motif:
-        print(f"La séquence à la position {pos} correspond au motif '{motif}'.")
-    else:
-        print(f"La séquence à la position {pos} ne correspond pas au motif '{motif}'.") 
+        match.append(pos)
 
 main()
